@@ -29,7 +29,7 @@ const HikesList: React.FC = () => {
 
   return (
     <>
-      <ul className="flex flex-wrap">
+      <ul className="flex justify-center flex-wrap">
         {hikeList.map((hike) => (
           <Hike key={hike.id} hike={hike} />
         ))}
