@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Hike from './Hike';
-import { fetchHikes } from '../../../services/fetchHikesService';
+import React, { useState, useEffect } from "react";
+import Hike from "./Hike";
+import { fetchHikes } from "../../../services/fetchHikesService";
 
 const HikesList: React.FC = () => {
   const [hikeList, setHikeList] = useState<any[]>([]);
@@ -11,9 +11,10 @@ const HikesList: React.FC = () => {
       setLoading(true);
       try {
         const data = await fetchHikes();
+        console.log("DATA:", data);
         setHikeList(data);
       } catch (error) {
-        console.error('Error fetching hikes:', error);
+        console.error("Error fetching hikes:", error);
       } finally {
         setLoading(false);
       }
@@ -28,10 +29,10 @@ const HikesList: React.FC = () => {
 
   return (
     <>
-      <ul className='flex flex-wrap'>
-      {hikeList.map(hike => (
-        <Hike key={hike.id} hike={hike} />
-      ))}
+      <ul className="flex flex-wrap">
+        {hikeList.map((hike) => (
+          <Hike key={hike.id} hike={hike} />
+        ))}
       </ul>
     </>
   );
